@@ -4,27 +4,22 @@ import ru.sbt.mipt.oop.homecomponents.BasicSmartHome;
 
 public class AllLightsOnCommand implements UndoableCommand {
     private final BasicSmartHome smartHome;
-    private final String owner;
+    //private final String owner;
 
-    public AllLightsOnCommand(BasicSmartHome smartHome, String owner) {
+    public AllLightsOnCommand(BasicSmartHome smartHome) {
         this.smartHome = smartHome;
-        this.owner = owner;
+       // this.owner = owner;
     }
 
     @Override
     public void execute() {
-        CommandHistory.save(this);
+       // CommandHistory.save(this);
         smartHome.allLightsOn();
     }
 
     @Override
     public void undo() {
         smartHome.allLightsOff();
-    }
-
-    @Override
-    public String getOwner() {
-        return owner;
     }
 
 }

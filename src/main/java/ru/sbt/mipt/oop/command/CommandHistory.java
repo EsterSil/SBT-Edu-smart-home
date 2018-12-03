@@ -1,22 +1,33 @@
 package ru.sbt.mipt.oop.command;
 
-import java.util.Stack;
+import java.util.List;
+
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class CommandHistory {
-    private static Stack<UndoableCommand> history = new Stack<>();
+    //private static Stack<UndoableCommand> history = new Stack<>();
+    private  ConcurrentHashMap <String, List<UndoableCommand>>history = new ConcurrentHashMap<>();
 
-    public static void save(UndoableCommand command) {
-        history.push(command);
+    public void save(Command command, String rcID ) {
+
+        if (!(command instanceof UndoableCommand)) return;
+
+        if(history.containsKey(rcID)){
+            history.get(rcID).add(0, (UndoableCommand) command);
+        } else {
+            List<UndoableCommand> personalHistory = new CopyOnWriteArrayList<>();
+            personalHistory.add((UndoableCommand) command);
+            history.put(rcID, personalHistory);
+        }
     }
 
-    public static boolean isOwnerOfLast(String owner) {
-        if (history.empty()) return false;
-        return owner.equals(history.peek().getOwner());
-    }
 
-    public static UndoableCommand getLast() {
-        if (history.empty()) return null;
-        return history.pop();
+    public UndoableCommand getLast(String rcID) {
+        if (!history.containsKey(rcID)) return null;
+        List<UndoableCommand> personalHistory = history.get(rcID);
+        if (personalHistory.size() == 0) return null;
+        return personalHistory.remove(0);
 
     }
 }

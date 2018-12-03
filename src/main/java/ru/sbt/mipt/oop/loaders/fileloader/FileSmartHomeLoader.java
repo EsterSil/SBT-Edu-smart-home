@@ -1,10 +1,9 @@
-package ru.sbt.mipt.oop.loarers.fileloader;
+package ru.sbt.mipt.oop.loaders.fileloader;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
 import ru.sbt.mipt.oop.homecomponents.BasicSmartHome;
-import ru.sbt.mipt.oop.loarers.SmartHomeLoader;
+import ru.sbt.mipt.oop.loaders.SmartHomeLoader;
 
 import java.io.IOException;
 import java.nio.file.Files;

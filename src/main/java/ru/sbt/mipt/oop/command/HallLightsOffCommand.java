@@ -6,16 +6,16 @@ import ru.sbt.mipt.oop.homecomponents.Room;
 
 public class HallLightsOffCommand implements UndoableCommand {
     private final BasicSmartHome smartHome;
-    private final String owner;
+    //private final String owner;
 
-    public HallLightsOffCommand(BasicSmartHome smartHome, String owner) {
+    public HallLightsOffCommand(BasicSmartHome smartHome) {
         this.smartHome = smartHome;
-        this.owner = owner;
+       // this.owner = owner;
     }
 
     @Override
     public void execute() {
-        CommandHistory.save(this);
+       // CommandHistory.save(this);
         smartHome.executeAction(object -> {
             if (object instanceof Room) {
                 Room room = (Room) object;
@@ -46,10 +46,5 @@ public class HallLightsOffCommand implements UndoableCommand {
                 }
             }
         });
-    }
-
-    @Override
-    public String getOwner() {
-        return owner;
     }
 }

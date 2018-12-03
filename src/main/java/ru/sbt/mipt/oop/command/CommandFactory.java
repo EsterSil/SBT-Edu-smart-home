@@ -1,6 +1,7 @@
 package ru.sbt.mipt.oop.command;
 
 import ru.sbt.mipt.oop.homecomponents.BasicSmartHome;
+import ru.sbt.mipt.oop.remotecontrol.Controller;
 
 
 public class CommandFactory {
@@ -12,23 +13,30 @@ public class CommandFactory {
         this.smartHome = smartHome;
     }
 
-    public Command getCommand(CommandType type, String controllerId) {
+    public Command getCommand(CommandType type) {
         switch (type) {
             case ALL_LIGHTS_OFF:
-                return new AllLightsOffCommand(smartHome, controllerId);
+                return new AllLightsOffCommand(smartHome);
             case ALL_LIGHTS_ON:
-                return new AllLightsOnCommand(smartHome, controllerId);
+                return new AllLightsOnCommand(smartHome);
             case HALL_DOOR_CLOSE:
-                return new HallDoorCloseCommand(smartHome, controllerId);
+                return new HallDoorCloseCommand(smartHome);
             case HALL_LIGHTS_OFF:
-                return new HallLightsOffCommand(smartHome, controllerId);
+                return new HallLightsOffCommand(smartHome);
             case SIGNALLING_ACTIVATE:
                 return new SignallingActivateCommand(smartHome);
             case SIGNALLING_DEACTIVATE:
                 return new SignallingAlarmCommand(smartHome);
-            case UNDO:
-                return new UndoCommand(controllerId);
+            default:
+                return null;
+
         }
-        return null;
     }
+
+    public Command getUndoCommandForController( Controller controller) {
+
+            return new UndoCommand(controller);
+
+    }
+
 }

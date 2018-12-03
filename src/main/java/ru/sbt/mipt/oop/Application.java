@@ -17,9 +17,11 @@ public class Application {
         ApplicationContext context = new AnnotationConfigApplicationContext(HomeConfiguration.class);
         CommandFactory factory = context.getBean(CommandFactory.class);
         String rcID = "001";
-        Controller controller = new Controller(rcID);
-        controller.setCommandOnButton("A", factory.getCommand(CommandType.ALL_LIGHTS_OFF, rcID));
-        controller.setCommandOnButton("4", factory.getCommand(CommandType.UNDO, rcID));
+        Controller controller = new Controller(rcID, ch);
+        controller.setCommandOnButton("A", factory.getCommand(CommandType.ALL_LIGHTS_ON));
+        controller.setCommandOnButton("4", factory.getUndoCommandForController(controller));
+        controller.onButtonPressed("A");
+        controller.onButtonPressed("4");
         RemoteControlRegistry registry = context.getBean(RemoteControlRegistry.class);
         registry.registerRemoteControl(controller);
         EventManager eventManager = context.getBean(EventManager.class);

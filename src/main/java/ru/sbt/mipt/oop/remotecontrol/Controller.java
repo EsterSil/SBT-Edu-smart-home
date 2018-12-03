@@ -1,6 +1,7 @@
 package ru.sbt.mipt.oop.remotecontrol;
 
 import ru.sbt.mipt.oop.command.Command;
+import ru.sbt.mipt.oop.command.CommandHistory;
 
 
 import java.util.HashMap;
@@ -11,9 +12,10 @@ public class Controller implements RemoteControl {
 
     private final String rcID;
     private Map<String, Command> buttonMap = new HashMap<>();
-
-    public Controller(String rcID) {
+    private final CommandHistory history;
+    public Controller(String rcID, CommandHistory ch) {
         this.rcID = rcID;
+        this.history = ch;
     }
 
     public String getRcID() {
@@ -23,7 +25,9 @@ public class Controller implements RemoteControl {
     @Override
     public void onButtonPressed(String buttonCode) {
         if (buttonMap.containsKey(buttonCode)) {
-            buttonMap.get(buttonCode).execute();
+            Command command = buttonMap.get(buttonCode);
+            history.save(command, rcID);
+            command.execute();
         }
     }
 

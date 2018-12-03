@@ -6,8 +6,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import ru.sbt.mipt.oop.command.CommandFactory;
-import ru.sbt.mipt.oop.loarers.SmartHomeLoader;
-import ru.sbt.mipt.oop.loarers.fileloader.FileSmartHomeLoader;
+import ru.sbt.mipt.oop.command.CommandHistory;
+import ru.sbt.mipt.oop.loaders.SmartHomeLoader;
+import ru.sbt.mipt.oop.loaders.fileloader.FileSmartHomeLoader;
 import ru.sbt.mipt.oop.managers.EventManager;
 import ru.sbt.mipt.oop.managers.EventManagerAdapter;
 import ru.sbt.mipt.oop.processor.*;
@@ -27,6 +28,10 @@ public class HomeConfiguration {
 
     public HomeConfiguration() {
     }
+    @Bean
+    public CommandHistory commandHistory() {
+        return new CommandHistory();
+    }
 
     @Bean
     public RemoteControlRegistry remoteControlRegistry() {
@@ -43,10 +48,11 @@ public class HomeConfiguration {
         return smartHome;
     }
 
-    @Bean
-    public CommandFactory commandFactory() {
-        if (smartHome == null) basicSmartHome(new FileSmartHomeLoader());
-        return new CommandFactory(smartHome);
+    //@Bean
+    @Autowired
+    public CommandFactory commandFactory(BasicSmartHome basicSmartHome) {
+        //if (smartHome == null) basicSmartHome(new FileSmartHomeLoader());
+        return new CommandFactory(basicSmartHome);
     }
 
     @Bean

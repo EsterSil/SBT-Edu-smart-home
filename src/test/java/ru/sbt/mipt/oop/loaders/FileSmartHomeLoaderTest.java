@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import ru.sbt.mipt.oop.homecomponents.BasicSmartHome;
 import ru.sbt.mipt.oop.homecomponents.HomeComponent;
 import ru.sbt.mipt.oop.homecomponents.Room;
-import ru.sbt.mipt.oop.loarers.SmartHomeLoader;
-import ru.sbt.mipt.oop.loarers.fileloader.FileSmartHomeLoader;
+import ru.sbt.mipt.oop.loaders.fileloader.FileSmartHomeLoader;
 
 import java.io.IOException;
 import java.util.ArrayList;
