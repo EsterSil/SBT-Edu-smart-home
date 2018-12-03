@@ -1,7 +1,6 @@
 package ru.sbt.mipt.oop.managers;
 
 import com.coolcompany.smarthome.events.SensorEventsManager;
-import org.springframework.stereotype.Component;
 import ru.sbt.mipt.oop.processor.HomeEventProcessor;
 
 public class EventManagerAdapter implements EventManager {

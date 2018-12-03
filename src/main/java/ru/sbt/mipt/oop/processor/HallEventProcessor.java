@@ -2,8 +2,8 @@ package ru.sbt.mipt.oop.processor;
 
 import ru.sbt.mipt.oop.eventsgenerator.SensorEvent;
 import ru.sbt.mipt.oop.eventsgenerator.SensorEventType;
-import ru.sbt.mipt.oop.homecomponents.Room;
 import ru.sbt.mipt.oop.homecomponents.BasicSmartHome;
+import ru.sbt.mipt.oop.homecomponents.Room;
 
 public class HallEventProcessor implements HomeEventProcessor {
     private final BasicSmartHome smartHome;

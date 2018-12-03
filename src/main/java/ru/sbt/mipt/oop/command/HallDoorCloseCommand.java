@@ -7,16 +7,14 @@ import ru.sbt.mipt.oop.homecomponents.Room;
 public class HallDoorCloseCommand implements UndoableCommand {
 
     private final BasicSmartHome smartHome;
-   // private final String owner;
+
 
     public HallDoorCloseCommand(BasicSmartHome smartHome) {
         this.smartHome = smartHome;
-        //this.owner = owner;
     }
 
     @Override
     public void execute() {
-       // CommandHistoryImpl.save(this);
         smartHome.executeAction(object -> {
             if (object instanceof Room) {
                 Room room = (Room) object;

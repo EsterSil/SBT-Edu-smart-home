@@ -9,10 +9,6 @@ public class Alarm implements AlarmState {
         System.out.println("ALARM!");
     }
 
-    @Override
-    public void changeState(AlarmState state) {
-        signaling.changeState(state);
-    }
 
     @Override
     public void activate(String code) {

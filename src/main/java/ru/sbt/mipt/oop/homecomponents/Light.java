@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Light implements HomeLeaf {
-    private boolean isOn;
-    private final String id;
     final String TURNED_ON = " was turned on.";
     final String TURNED_OFF = " was turned off.";
+    private final String id;
+    private boolean isOn;
 
     @JsonCreator
     public Light(@JsonProperty("isOn") boolean isOn, @JsonProperty("id") String id) {

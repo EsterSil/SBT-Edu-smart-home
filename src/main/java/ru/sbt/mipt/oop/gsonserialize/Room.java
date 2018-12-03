@@ -6,25 +6,11 @@ import ru.sbt.mipt.oop.homecomponents.HomeComponent;
 
 import java.util.Collection;
 
- class Room  implements HomeComponent {
+class Room implements HomeComponent {
 
     private Collection<Light> lights;
-    public void setLights(Collection<Light> lights) {
-        this.lights = lights;
-    }
-
     private Collection<Door> doors;
-    public void setDoors(Collection<Door> doors) {
-        this.doors = doors;
-    }
-
     private String name;
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getName() {
-        return name;
-    }
 
     public Room() {
     }
@@ -36,13 +22,28 @@ import java.util.Collection;
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Collection<Light> getLights() {
         return lights;
     }
 
+    public void setLights(Collection<Light> lights) {
+        this.lights = lights;
+    }
+
     public Collection<Door> getDoors() {
         return doors;
+    }
+
+    public void setDoors(Collection<Door> doors) {
+        this.doors = doors;
     }
 
     @Override

@@ -3,17 +3,16 @@ package ru.sbt.mipt.oop.alarm;
 public class Signaling {
 
     private AlarmState state = new Disabled(this);
-
-    void setSecretCode(String secretCode) {
-        this.secretCode = secretCode;
-    }
-
     private String secretCode = "0000";
 
     public Signaling() {
     }
 
     public Signaling(String secretCode) {
+        this.secretCode = secretCode;
+    }
+
+    void setSecretCode(String secretCode) {
         this.secretCode = secretCode;
     }
 

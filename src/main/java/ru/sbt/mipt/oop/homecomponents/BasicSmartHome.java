@@ -3,13 +3,11 @@ package ru.sbt.mipt.oop.homecomponents;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.stereotype.Component;
 import ru.sbt.mipt.oop.alarm.Signaling;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Component
 public class BasicSmartHome implements HomeComposite {
 
     private Collection<HomeComponent> components;

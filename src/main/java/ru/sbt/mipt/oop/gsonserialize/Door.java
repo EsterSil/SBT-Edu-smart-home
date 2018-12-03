@@ -1,8 +1,5 @@
 package ru.sbt.mipt.oop.gsonserialize;
 
-import ru.sbt.mipt.oop.homecomponents.Action;
-import ru.sbt.mipt.oop.homecomponents.HomeLeaf;
-
 class Door {
     private final String id;
     private boolean isOpen;
@@ -17,13 +14,12 @@ class Door {
         return id;
     }
 
-    private void setOpen(boolean open) {
-        isOpen = open;
-    }
-
-
     public boolean isOpen() {
         return isOpen;
+    }
+
+    private void setOpen(boolean open) {
+        isOpen = open;
     }
 }
 

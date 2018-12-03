@@ -2,8 +2,6 @@ package ru.sbt.mipt.oop.remotecontrol;
 
 import ru.sbt.mipt.oop.command.Command;
 import ru.sbt.mipt.oop.command.CommandHistory;
-import ru.sbt.mipt.oop.command.CommandHistoryImpl;
-
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,8 +10,9 @@ public class Controller implements RemoteControl {
 
 
     private final String rcID;
-    private Map<String, Command> buttonMap = new HashMap<>();
     private final CommandHistory history;
+    private Map<String, Command> buttonMap = new HashMap<>();
+
     public Controller(String rcID, CommandHistory ch) {
         this.rcID = rcID;
         this.history = ch;

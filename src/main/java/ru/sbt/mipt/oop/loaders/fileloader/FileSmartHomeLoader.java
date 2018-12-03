@@ -1,19 +1,16 @@
 package ru.sbt.mipt.oop.loaders.fileloader;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.stereotype.Component;
 import ru.sbt.mipt.oop.homecomponents.BasicSmartHome;
 import ru.sbt.mipt.oop.loaders.SmartHomeLoader;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-//@Component
+
 public class FileSmartHomeLoader implements SmartHomeLoader {
     private String path;
 
-    public FileSmartHomeLoader() {
-    }
 
     public void setPath(String path) {
         this.path = path;

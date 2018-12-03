@@ -1,19 +1,16 @@
 package ru.sbt.mipt.oop.gsonserialize;
 
-import ru.sbt.mipt.oop.homecomponents.Action;
-import ru.sbt.mipt.oop.homecomponents.HomeLeaf;
-
- class Light {
-    private boolean isOn;
+class Light {
     private final String id;
-
-    public boolean isOn() {
-        return isOn;
-    }
+    private boolean isOn;
 
     public Light(String id, boolean isOn) {
         this.id = id;
         this.isOn = isOn;
+    }
+
+    public boolean isOn() {
+        return isOn;
     }
 
     public String getId() {

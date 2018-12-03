@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Door implements HomeLeaf {
     private final String id;
-    private boolean isOpen;
     private final String OPENED = " was opened.";
     private final String CLOSED = " was closed.";
+    private boolean isOpen;
 
     @JsonCreator
     public Door(@JsonProperty("isOpen") boolean isOpen, @JsonProperty("id") String id) {

@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HandlerProcessorAdapter implements EventHandler {
-    private final HomeEventProcessor eventProcessor;
     private static Map<String, SensorEventType> eventTypeMap = new HashMap<>();
 
     static {
@@ -21,6 +20,8 @@ public class HandlerProcessorAdapter implements EventHandler {
         eventTypeMap.put("DoorIsLocked", SensorEventType.ALARM_ACTIVATE);
         eventTypeMap.put("DoorIsUnlocked", SensorEventType.ALARM_DEACTIVATE);
     }
+
+    private final HomeEventProcessor eventProcessor;
 
     HandlerProcessorAdapter(HomeEventProcessor eventProcessor) {
         this.eventProcessor = eventProcessor;

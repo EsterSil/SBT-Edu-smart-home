@@ -9,8 +9,8 @@ public class Disabled implements AlarmState {
         System.out.println("Signaling disabled");
     }
 
-    @Override
-    public void changeState(AlarmState state) {
+
+    private void changeState(AlarmState state) {
         signaling.changeState(state);
     }
 

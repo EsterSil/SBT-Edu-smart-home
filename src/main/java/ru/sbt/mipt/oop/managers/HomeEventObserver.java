@@ -1,8 +1,8 @@
 package ru.sbt.mipt.oop.managers;
 
-import ru.sbt.mipt.oop.eventsgenerator.*;
+import ru.sbt.mipt.oop.eventsgenerator.EventSource;
+import ru.sbt.mipt.oop.eventsgenerator.SensorEvent;
 import ru.sbt.mipt.oop.processor.HomeEventProcessor;
-
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,6 +16,12 @@ public class HomeEventObserver implements EventManager {
         this.eventSource = eventSource;
     }
 
+    private static void publish(SensorEvent event, Collection<HomeEventProcessor> eventProcessors) {
+        for (HomeEventProcessor p : eventProcessors) {
+            p.onEvent(event);
+        }
+    }
+
     public void runEventLoop() {
         SensorEvent event = eventSource.getNextSensorEvent();
         System.out.println("event" + event.toString());
@@ -23,12 +29,6 @@ public class HomeEventObserver implements EventManager {
             System.out.println("Got event: " + event);
             publish(event, eventProcessors);
             event = eventSource.getNextSensorEvent();
-        }
-    }
-
-    private static void publish(SensorEvent event, Collection<HomeEventProcessor> eventProcessors) {
-        for (HomeEventProcessor p : eventProcessors) {
-            p.onEvent(event);
         }
     }
 
