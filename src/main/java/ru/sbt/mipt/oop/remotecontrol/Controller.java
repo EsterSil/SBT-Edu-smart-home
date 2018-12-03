@@ -2,6 +2,7 @@ package ru.sbt.mipt.oop.remotecontrol;
 
 import ru.sbt.mipt.oop.command.Command;
 import ru.sbt.mipt.oop.command.CommandHistory;
+import ru.sbt.mipt.oop.command.CommandHistoryImpl;
 
 
 import java.util.HashMap;

@@ -7,26 +7,33 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.sbt.mipt.oop.command.CommandHistory;
+import ru.sbt.mipt.oop.command.Command;
+import ru.sbt.mipt.oop.command.CommandHistoryImpl;
 import ru.sbt.mipt.oop.command.UndoCommand;
 import ru.sbt.mipt.oop.command.UndoableCommand;
-import ru.sbt.mipt.oop.homecomponents.BasicSmartHome;
+import ru.sbt.mipt.oop.remotecontrol.Controller;
 
 @ExtendWith(MockitoExtension.class)
 public class UndoCommandTest {
 
     @Mock
     private UndoableCommand command;
+    @Mock
+    private Controller controller;
+    @Mock
+    CommandHistoryImpl commandHistory;
 
-    private UndoCommand undo = new UndoCommand("1");
+    private UndoCommand undo;
 
     @Test
     void executeTest() {
-        Mockito.when(command.getOwner()).thenReturn("1");
-        CommandHistory.save(command);
-
+        //Mockito.doCallRealMethod().when(commandHistory).save(Mockito.any(Command.class), Mockito.anyString());
+        Mockito.when(commandHistory.getLast(Mockito.anyString())).thenReturn(command);
+        Mockito.when(controller.getRcID()).thenReturn("1");
+        undo = new UndoCommand(controller, commandHistory);
         undo.execute();
-        Assertions.assertTrue(CommandHistory.getLast() == null);
-        Mockito.verify(command).getOwner();
+
+        Mockito.verify(commandHistory).getLast("1");
+        Mockito.verify(command).undo();
     }
 }

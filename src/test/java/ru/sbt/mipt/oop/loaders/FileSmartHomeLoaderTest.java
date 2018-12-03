@@ -12,7 +12,8 @@ import java.util.ArrayList;
 
 public class FileSmartHomeLoaderTest {
 
-    private SmartHomeLoader loader = new FileSmartHomeLoader();
+    private FileSmartHomeLoader loader = new FileSmartHomeLoader();
+    {loader.setPath("smart-home-1.js");}
 
     @Test
     void loadTest() {

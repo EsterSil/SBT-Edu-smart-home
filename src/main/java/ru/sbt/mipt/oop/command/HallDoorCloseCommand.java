@@ -16,7 +16,7 @@ public class HallDoorCloseCommand implements UndoableCommand {
 
     @Override
     public void execute() {
-       // CommandHistory.save(this);
+       // CommandHistoryImpl.save(this);
         smartHome.executeAction(object -> {
             if (object instanceof Room) {
                 Room room = (Room) object;

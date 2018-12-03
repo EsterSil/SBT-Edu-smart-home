@@ -8,9 +8,10 @@ public class CommandFactory {
 
 
     private final BasicSmartHome smartHome;
-
-    public CommandFactory(BasicSmartHome smartHome) {
+    private final CommandHistory history;
+    public CommandFactory(BasicSmartHome smartHome, CommandHistory history) {
         this.smartHome = smartHome;
+        this.history = history;
     }
 
     public Command getCommand(CommandType type) {
@@ -35,7 +36,7 @@ public class CommandFactory {
 
     public Command getUndoCommandForController( Controller controller) {
 
-            return new UndoCommand(controller);
+            return new UndoCommand(controller, history);
 
     }
 

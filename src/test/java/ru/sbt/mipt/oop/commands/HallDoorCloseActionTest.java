@@ -27,7 +27,7 @@ class HallDoorCloseActionTest {
         Mockito.when(room.getName()).thenReturn("hall");
         Mockito.doCallRealMethod().when(room).executeAction(Mockito.any());
         smartHome.addChild(room);
-        command = new HallDoorCloseCommand(smartHome, "1");
+        command = new HallDoorCloseCommand(smartHome);
         command.execute();
         Mockito.verify(room, Mockito.atLeast(2)).executeAction(Mockito.any());
     }
@@ -39,7 +39,7 @@ class HallDoorCloseActionTest {
         Mockito.doCallRealMethod().when(room).addChild(Mockito.any());
         room.addChild(door);
         smartHome.addChild(room);
-        command = new HallDoorCloseCommand(smartHome, "1");
+        command = new HallDoorCloseCommand(smartHome);
         command.execute();
         Mockito.verify(door, Mockito.atLeast(2)).executeAction(Mockito.any());
     }

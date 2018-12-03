@@ -26,7 +26,7 @@ class HallLightsOffCommandActionTest {
         Mockito.when(room.getName()).thenReturn("hall");
         Mockito.doCallRealMethod().when(room).executeAction(Mockito.any());
         smartHome.addChild(room);
-        command = new HallLightsOffCommand(smartHome, "1");
+        command = new HallLightsOffCommand(smartHome);
         command.execute();
         Mockito.verify(room, Mockito.atLeast(2)).executeAction(Mockito.any());
     }
@@ -39,7 +39,7 @@ class HallLightsOffCommandActionTest {
         Mockito.doCallRealMethod().when(room).addChild(Mockito.any());
         room.addChild(light);
         smartHome.addChild(room);
-        command = new HallLightsOffCommand(smartHome, "1");
+        command = new HallLightsOffCommand(smartHome);
         command.execute();
         Mockito.verify(light, Mockito.atLeast(2)).executeAction(Mockito.any());
     }

@@ -17,14 +17,14 @@ class HallLightsOffCommandTest {
     private HallLightsOffCommand command;
     @Test
     void executeTest() {
-        command = new HallLightsOffCommand(smartHome,"1");
+        command = new HallLightsOffCommand(smartHome);
         command.execute();
         Mockito.verify(smartHome).executeAction(Mockito.any());
     }
 
     @Test
     void undoTest() {
-        command = new HallLightsOffCommand(smartHome,"1");
+        command = new HallLightsOffCommand(smartHome);
         command.undo();
         Mockito.verify(smartHome).executeAction(Mockito.any());
     }

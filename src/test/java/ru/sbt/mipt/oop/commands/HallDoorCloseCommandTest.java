@@ -19,14 +19,14 @@ class HallDoorCloseCommandTest {
 
     @Test
     void executeTest() {
-        command = new HallDoorCloseCommand(smartHome, "1");
+        command = new HallDoorCloseCommand(smartHome);
         command.execute();
         Mockito.verify(smartHome).executeAction(Mockito.any());
     }
 
     @Test
     void undoTest() {
-        command = new HallDoorCloseCommand(smartHome, "1");
+        command = new HallDoorCloseCommand(smartHome);
         command.undo();
         Mockito.verify(smartHome).executeAction(Mockito.any());
     }

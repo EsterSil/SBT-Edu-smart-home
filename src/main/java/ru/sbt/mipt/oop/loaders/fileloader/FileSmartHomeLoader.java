@@ -8,13 +8,22 @@ import ru.sbt.mipt.oop.loaders.SmartHomeLoader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-@Component
+//@Component
 public class FileSmartHomeLoader implements SmartHomeLoader {
-@Override
+    private String path;
+
+    public FileSmartHomeLoader() {
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    @Override
     public BasicSmartHome load() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
-        String json = new String(Files.readAllBytes(Paths.get("smart-home-1.js")));
+        String json = new String(Files.readAllBytes(Paths.get(path)));
         return mapper.readValue(json, BasicSmartHome.class);
     }
 

@@ -14,7 +14,7 @@ public class AllLightsOffCommand implements UndoableCommand {
 
     @Override
     public void execute() {
-       // CommandHistory.save(this);
+       // CommandHistoryImpl.save(this);
         smartHome.allLightsOff();
     }
 
